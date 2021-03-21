@@ -28,13 +28,13 @@ export class AppComponent {
     this.hservice.getOne( 1 )
       .forEach( value => console.log("First hero: ", value) );
 
-    this.hservice.add({ id: 2, name: "J", address: "Bp.", superpower: "drink" })
+    this.hservice.add({ id: 2, name: "Jack", address: "Bp.", superpower: "drink" })
       .forEach( value => console.log("Added second hero: ", value) );
 
-    this.hservice.update({ id: 1, name: "K", address: "Deb.", superpower: "d" })
+    this.hservice.update({ id: 2, name: "Kris", address: "Deb.", superpower: "d" })
       .forEach( value => console.log("Updated hero 1: ", value) );
 
-    this.hservice.remove( 10 )
-      .forEach( value => console.log("Deleted hero 10: ") );
+    this.hservice.remove( 2 )
+      .forEach( value => console.log("Deleted hero 2: ") );
   }
 }
