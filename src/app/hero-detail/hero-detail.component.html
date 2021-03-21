@@ -1,0 +1,17 @@
+<ul [appHighlight]="'lightblue'">
+  <li>
+    <p *appDelay="1000">
+      {{hero.name | prefix:'Herr'}}
+    </p>
+  </li>
+  <li>
+    <p *appDelay="1500">
+      {{hero.address}}
+    </p>
+  </li>
+  <li>
+    <p *appDelay="2000">
+      {{hero.superpower}}
+    </p>
+  </li>
+</ul>
