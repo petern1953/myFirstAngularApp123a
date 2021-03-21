@@ -2,15 +2,15 @@
   "heroes": [
     {
       "id": 1,
-      "name": "Lucy",
-      "address": "Bp",
-      "superpower": "biking"
+      "name": "K",
+      "address": "Deb.",
+      "superpower": "d"
     },
     {
-      "id": 10,
-      "name": "Bob",
-      "address": "San Francisco",
-      "superpower": "really smart"
+      "id": 2,
+      "name": "J",
+      "address": "Bp.",
+      "superpower": "drink"
     }
   ]
 }

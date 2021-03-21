@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
 import { Hero } from './model/hero';
 import { FootballService } from './service/football.service';
+import { HeroService } from './service/hero.service';
 
 @Component({
   selector: 'app-root',
@@ -17,29 +18,23 @@ export class AppComponent {
   };
   listObservable: Observable<any> = new Observable();
 
-  constructor( private fservice: FootballService ) {
-    this.listObservable = new Observable(observer => {
-      let to = setTimeout(() => {
-        observer.next("Megjöttem...");
-      }, 3000);
+  constructor(
+    private fservice: FootballService,
+    private hservice: HeroService,
+  ) {
+    this.hservice.getAll()
+      .forEach( value => console.log("All hero: ", value ) );
 
-      let to1 = setTimeout(() => {
-        if (Math.random() > .75) {
-          observer.error("error");
-        } else {
-          console.log("error free");
-        };
-       }, 3500);
+    this.hservice.getOne( 1 )
+      .forEach( value => console.log("First hero: ", value) );
 
-      let to2 = setTimeout(() => {
-        observer.complete();
-       }, 4000);
-    });
+    this.hservice.add({ id: 2, name: "J", address: "Bp.", superpower: "drink" })
+      .forEach( value => console.log("Added second hero: ", value) );
 
-    this.listObservable.subscribe(
-      value => console.log(value),
-      error => console.error(error),
-      () => console.log("complete")
-    );
+    this.hservice.update({ id: 1, name: "K", address: "Deb.", superpower: "d" })
+      .forEach( value => console.log("Updated hero 1: ", value) );
+
+    this.hservice.remove( 10 )
+      .forEach( value => console.log("Deleted hero 10: ") );
   }
 }

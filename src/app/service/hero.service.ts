@@ -27,7 +27,7 @@ export class HeroService {
     return this.http.patch<Hero>(`${this.jsonUrl}/${hero.id}`, hero);
   }
 
-  remove(hero: Hero): Observable<any> {
+  remove(hero: any): Observable<any> {
     const id = hero.id ? hero.id : hero;
     return this.http.delete(`${this.jsonUrl}/${id}`);
   }

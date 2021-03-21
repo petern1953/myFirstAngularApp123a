@@ -125,4 +125,39 @@ g) remove(hero) metódus, egy hero törlése:
     const id = hero.id ? hero.id : hero;
     return this.http.delete(`${this.jsonUrl}/${id}`);
   }
+-------------------------
+eddig volt az 123, 
+az 3. Angular 2 plusz keretrendszer - Ajax és Angular,
+mostantól az 123a
+az Angular CRUD - alapvető adat-műveletek alapján
+-------------------------
+8. app.component.ts:
+a)
+import { HeroService } from './service/hero.service';
+b)
+constructor módosult
+  constructor(
+    private fservice: FootballService,
+    private hservice: HeroService,
+  ) {
+    this.hservice.getAll()
+      .forEach( value => console.log("All hero: ", value ) );
 
+    this.hservice.getOne( 1 )
+      .forEach( value => console.log("First hero: ", value) );
+
+    this.hservice.add({ id: 2, name: "J", address: "Bp.", superpower: "drink" })
+      .forEach( value => console.log("Added second hero: ", value) );
+
+    this.hservice.update({ id: 1, name: "K", address: "Deb.", superpower: "d" })
+      .forEach( value => console.log("Updated hero 1: ", value) );
+
+    this.hservice.remove( 10 )
+      .forEach( value => console.log("Deleted hero 10: ") );
+  }
+
+9. hero.service.ts-t módosítani kell (hero: any):
+  remove(hero: any): Observable<any> {
+
+10. a json-file-t a src-mappán kívülre kell mozgatni,
+különben ciklikusan frissíti magát az alkalmazás
